@@ -31,17 +31,10 @@ class Herbivore extends Animal {
 
 class Carnivore extends Animal {
   bite(animal) {
-    // Não morde carnívoro
-    if (animal instanceof Carnivore) {
+    if (!(animal instanceof Herbivore) || animal.hidden) {
       return;
     }
 
-    // Não morde se o herbívoro está escondido
-    if (animal.hidden) {
-      return;
-    }
-
-    // Morde e reduz health em 50
     animal.takeDamage(50);
   }
 }
